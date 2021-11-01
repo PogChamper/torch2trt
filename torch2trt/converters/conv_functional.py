@@ -43,6 +43,11 @@ def convert_Conv_trt7_functional(ctx):
         kernel_shape=kernel_size,
         kernel=kernel,
         bias=bias)
+
+    if not(isinstance(stride[0], int)):
+        stride=(stride[0][0], stride[1][1])
+
+
     layer.stride_nd = stride
     layer.padding_nd = padding
     layer.dilation_nd = dilation
